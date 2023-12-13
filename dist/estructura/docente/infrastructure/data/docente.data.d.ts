@@ -1,0 +1,33 @@
+import { Repository } from 'typeorm';
+import { Pagination } from '../../../../base/application/logic/pagination';
+import { Docente } from '../../domain/model/docente';
+import { DocenteDataI } from './docente.datai';
+declare class DocenteData implements DocenteDataI {
+    static TITULO: string;
+    static MODULO: string;
+    static TABLA: string;
+    static PATH_PAGINA: string;
+    static PATH_PAGINA_FORM: string;
+    result: any;
+    docente1?: Docente;
+    docentes: Docente[];
+    private docente_data1;
+    constructor(docente_data1: Repository<Docente>);
+    getTodos(pagination1: Pagination, relations1: any): Promise<Docente[]>;
+    getBuscar(builder_object_docente1: any, pagination1: Pagination, relations1: any): Promise<Docente[]>;
+    getBuscarGeneral(builder_object_docente1: any, pagination1: Pagination, relations1: any): Promise<Docente[]>;
+    getBuscarUno(builder_object_docente1: any, relations1: any): Promise<Docente>;
+    nuevo(docente1: Docente): Promise<any>;
+    actualizar(docente1: Docente): Promise<any>;
+    eliminar(id: number): Promise<any>;
+    nuevos(docentes: Array<Docente>): Promise<void>;
+    eliminars(ids: Array<number>): Promise<void>;
+    actualizars(updates_docentes: Array<Docente>, updates_columnas: Array<string>): Promise<void>;
+    getEntitiesFromModels(result: any): Docente[];
+    getEntityFromModel(result: any): Docente;
+    getModelsFromEntities(docentes: Docente[]): Docente[];
+    getModelFromEntity(docente1: Docente): Docente;
+    getBuilderFunctionObjectParametroSeleccionar(id: number): any;
+    getBuilderFunctionObjectParametroBuscar(req: any): any;
+}
+export { DocenteData };

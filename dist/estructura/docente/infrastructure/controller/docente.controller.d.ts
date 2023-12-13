@@ -1,0 +1,37 @@
+import { Request } from "express";
+import { TipoAccionEnum } from '../../../../base/util/tipo_accion_enum';
+import { GeneralEntityController } from '../../../../base/infrastructure/controller/general_entity_controller';
+import { Pagination } from '../../../../base/application/logic/pagination';
+import { Docente } from '../../domain/model/docente';
+import { DocenteLogic } from '../../application/logic/docente.logic';
+import { DocenteReturnView } from '../../infrastructure/util/return/docente_return_view.return';
+import { DocenteCreateRequest } from '../../infrastructure/util/request/docente_create.request';
+import { DocenteUpdateRequest } from '../../infrastructure/util/request/docente_update.request';
+declare class DocenteController extends GeneralEntityController {
+    private docente_logici1;
+    pagination1: Pagination;
+    relations1: any;
+    docente1: Docente;
+    docentes: Array<Docente>;
+    docente_return_view: DocenteReturnView;
+    result: any;
+    builder_object_docente1: any;
+    constructor(docente_logici1: DocenteLogic);
+    setReturnView(tipo_accion_enum1: TipoAccionEnum): void;
+    getDefault(pagination1: Pagination): Promise<DocenteReturnView>;
+    getIndex(pagination1: Pagination): Promise<DocenteReturnView>;
+    getTodos(pagination1: Pagination): Promise<DocenteReturnView>;
+    getBuscar(pagination1: Pagination, req: Request): Promise<DocenteReturnView>;
+    getSeleccionar(id: number): Promise<DocenteReturnView>;
+    nuevo(docente_create_request1: DocenteCreateRequest): Promise<DocenteReturnView>;
+    actualizar(docente_update_request1: DocenteUpdateRequest): Promise<DocenteReturnView>;
+    eliminar(id: number): Promise<DocenteReturnView>;
+    nuevos(docente_create_requests: Array<DocenteCreateRequest>): Promise<DocenteReturnView>;
+    eliminars(ids: Array<number>): Promise<DocenteReturnView>;
+    actualizars(docente_update_requests: Array<DocenteUpdateRequest>, updates_columnas: Array<string>): Promise<DocenteReturnView>;
+    guardarCambios(news_docentes: Array<Docente>, ids_deletes_docentes: Array<number>, updates_docentes: Array<Docente>, updates_columnas: Array<string>): Promise<DocenteReturnView>;
+    getTodosRelaciones(pagination1: Pagination): Promise<DocenteReturnView>;
+    getSeleccionarRelaciones(id: number): Promise<DocenteReturnView>;
+    getTodosEntitiesDto(pagination1: Pagination): Promise<Array<Docente>>;
+}
+export { DocenteController };

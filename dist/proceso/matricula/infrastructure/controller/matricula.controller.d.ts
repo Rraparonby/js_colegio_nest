@@ -1,0 +1,38 @@
+import { Request } from "express";
+import { TipoAccionEnum } from '../../../../base/util/tipo_accion_enum';
+import { GeneralEntityController } from '../../../../base/infrastructure/controller/general_entity_controller';
+import { Pagination } from '../../../../base/application/logic/pagination';
+import { Matricula } from '../../domain/model/matricula';
+import { MatriculaLogic } from '../../application/logic/matricula.logic';
+import { MatriculaReturnView } from '../../infrastructure/util/return/matricula_return_view.return';
+import { MatriculaCreateRequest } from '../../infrastructure/util/request/matricula_create.request';
+import { MatriculaUpdateRequest } from '../../infrastructure/util/request/matricula_update.request';
+import { MatriculaFKReturnView } from '../../infrastructure/util/return/matricula_fk_return_view.return';
+declare class MatriculaController extends GeneralEntityController {
+    private matricula_logici1;
+    pagination1: Pagination;
+    relations1: any;
+    matricula1: Matricula;
+    matriculas: Array<Matricula>;
+    matricula_return_view: MatriculaReturnView;
+    result: any;
+    matricula_fk_return_view_dto: MatriculaFKReturnView;
+    builder_object_matricula1: any;
+    constructor(matricula_logici1: MatriculaLogic);
+    setReturnView(tipo_accion_enum1: TipoAccionEnum): void;
+    getDefault(pagination1: Pagination): Promise<MatriculaReturnView>;
+    getIndex(pagination1: Pagination): Promise<MatriculaReturnView>;
+    getTodos(pagination1: Pagination): Promise<MatriculaReturnView>;
+    getBuscar(pagination1: Pagination, req: Request): Promise<MatriculaReturnView>;
+    getSeleccionar(id: number): Promise<MatriculaReturnView>;
+    nuevo(matricula_create_request1: MatriculaCreateRequest): Promise<MatriculaReturnView>;
+    actualizar(matricula_update_request1: MatriculaUpdateRequest): Promise<MatriculaReturnView>;
+    eliminar(id: number): Promise<MatriculaReturnView>;
+    nuevos(matricula_create_requests: Array<MatriculaCreateRequest>): Promise<MatriculaReturnView>;
+    eliminars(ids: Array<number>): Promise<MatriculaReturnView>;
+    actualizars(matricula_update_requests: Array<MatriculaUpdateRequest>, updates_columnas: Array<string>): Promise<MatriculaReturnView>;
+    guardarCambios(news_matriculas: Array<Matricula>, ids_deletes_matriculas: Array<number>, updates_matriculas: Array<Matricula>, updates_columnas: Array<string>): Promise<MatriculaReturnView>;
+    getFks(): Promise<MatriculaFKReturnView>;
+    getTodosEntitiesDto(pagination1: Pagination): Promise<Array<Matricula>>;
+}
+export { MatriculaController };

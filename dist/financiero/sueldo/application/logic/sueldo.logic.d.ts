@@ -1,0 +1,30 @@
+import { GeneralEntityLogic } from '../../../../base/application/logic/general_entity_logic';
+import { Pagination } from '../../../../base/application/logic/pagination';
+import { Sueldo } from '../../domain/model/sueldo';
+import { SueldoData } from '../../infrastructure/data/sueldo.data';
+import { SueldoLogicI } from './sueldo.logici';
+import { Docente } from '../../../../estructura/docente/domain/model/docente';
+declare class SueldoLogic extends GeneralEntityLogic implements SueldoLogicI {
+    private sueldo_datai1;
+    result: any;
+    total: any;
+    sueldo1?: Sueldo;
+    sueldos: Sueldo[];
+    docentesFK: Docente[];
+    private readonly docenteLogic;
+    constructor(sueldo_datai1: SueldoData);
+    getTodos(pagination1: Pagination, relations1: any): Promise<Sueldo[]>;
+    getBuscar(builder_object_sueldo1: any, pagination1: Pagination, relations1: any): Promise<Sueldo[]>;
+    getBuscarGeneral(builder_object_sueldo1: any, pagination1: Pagination, relations1: any): Promise<Sueldo[]>;
+    getBuscarUno(builder_object_sueldo1: any, relations1: any): Promise<Sueldo>;
+    nuevo(sueldo1: Sueldo): Promise<any>;
+    actualizar(sueldo1: Sueldo): Promise<any>;
+    eliminar(id: number): Promise<any>;
+    nuevos(sueldos: Array<Sueldo>): Promise<void>;
+    eliminars(ids: Array<number>): Promise<void>;
+    actualizars(updates_sueldos: Array<Sueldo>, updates_columnas: Array<string>): Promise<void>;
+    getBuilderFunctionObjectParametroSeleccionar(id: number): any;
+    getBuilderFunctionObjectParametroBuscar(req: any): any;
+    getFks(): Promise<void>;
+}
+export { SueldoLogic };

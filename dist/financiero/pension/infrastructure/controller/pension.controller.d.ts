@@ -1,0 +1,38 @@
+import { Request } from "express";
+import { TipoAccionEnum } from '../../../../base/util/tipo_accion_enum';
+import { GeneralEntityController } from '../../../../base/infrastructure/controller/general_entity_controller';
+import { Pagination } from '../../../../base/application/logic/pagination';
+import { Pension } from '../../domain/model/pension';
+import { PensionLogic } from '../../application/logic/pension.logic';
+import { PensionReturnView } from '../../infrastructure/util/return/pension_return_view.return';
+import { PensionCreateRequest } from '../../infrastructure/util/request/pension_create.request';
+import { PensionUpdateRequest } from '../../infrastructure/util/request/pension_update.request';
+import { PensionFKReturnView } from '../../infrastructure/util/return/pension_fk_return_view.return';
+declare class PensionController extends GeneralEntityController {
+    private pension_logici1;
+    pagination1: Pagination;
+    relations1: any;
+    pension1: Pension;
+    pensions: Array<Pension>;
+    pension_return_view: PensionReturnView;
+    result: any;
+    pension_fk_return_view_dto: PensionFKReturnView;
+    builder_object_pension1: any;
+    constructor(pension_logici1: PensionLogic);
+    setReturnView(tipo_accion_enum1: TipoAccionEnum): void;
+    getDefault(pagination1: Pagination): Promise<PensionReturnView>;
+    getIndex(pagination1: Pagination): Promise<PensionReturnView>;
+    getTodos(pagination1: Pagination): Promise<PensionReturnView>;
+    getBuscar(pagination1: Pagination, req: Request): Promise<PensionReturnView>;
+    getSeleccionar(id: number): Promise<PensionReturnView>;
+    nuevo(pension_create_request1: PensionCreateRequest): Promise<PensionReturnView>;
+    actualizar(pension_update_request1: PensionUpdateRequest): Promise<PensionReturnView>;
+    eliminar(id: number): Promise<PensionReturnView>;
+    nuevos(pension_create_requests: Array<PensionCreateRequest>): Promise<PensionReturnView>;
+    eliminars(ids: Array<number>): Promise<PensionReturnView>;
+    actualizars(pension_update_requests: Array<PensionUpdateRequest>, updates_columnas: Array<string>): Promise<PensionReturnView>;
+    guardarCambios(news_pensions: Array<Pension>, ids_deletes_pensions: Array<number>, updates_pensions: Array<Pension>, updates_columnas: Array<string>): Promise<PensionReturnView>;
+    getFks(): Promise<PensionFKReturnView>;
+    getTodosEntitiesDto(pagination1: Pagination): Promise<Array<Pension>>;
+}
+export { PensionController };

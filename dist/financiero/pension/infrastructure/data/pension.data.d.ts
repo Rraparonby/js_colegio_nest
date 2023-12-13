@@ -1,0 +1,37 @@
+import { Repository } from 'typeorm';
+import { Pagination } from '../../../../base/application/logic/pagination';
+import { Pension } from '../../domain/model/pension';
+import { PensionDataI } from './pension.datai';
+import { Alumno } from '../../../../estructura/alumno/domain/model/alumno';
+declare class PensionData implements PensionDataI {
+    static TITULO: string;
+    static MODULO: string;
+    static TABLA: string;
+    static PATH_PAGINA: string;
+    static PATH_PAGINA_FORM: string;
+    result: any;
+    pension1?: Pension;
+    pensions: Pension[];
+    private pension_data1;
+    alumnosFK: Alumno[];
+    private readonly alumnoLogic;
+    constructor(pension_data1: Repository<Pension>);
+    getTodos(pagination1: Pagination, relations1: any): Promise<Pension[]>;
+    getBuscar(builder_object_pension1: any, pagination1: Pagination, relations1: any): Promise<Pension[]>;
+    getBuscarGeneral(builder_object_pension1: any, pagination1: Pagination, relations1: any): Promise<Pension[]>;
+    getBuscarUno(builder_object_pension1: any, relations1: any): Promise<Pension>;
+    nuevo(pension1: Pension): Promise<any>;
+    actualizar(pension1: Pension): Promise<any>;
+    eliminar(id: number): Promise<any>;
+    nuevos(pensions: Array<Pension>): Promise<void>;
+    eliminars(ids: Array<number>): Promise<void>;
+    actualizars(updates_pensions: Array<Pension>, updates_columnas: Array<string>): Promise<void>;
+    getEntitiesFromModels(result: any): Pension[];
+    getEntityFromModel(result: any): Pension;
+    getModelsFromEntities(pensions: Pension[]): Pension[];
+    getModelFromEntity(pension1: Pension): Pension;
+    getBuilderFunctionObjectParametroSeleccionar(id: number): any;
+    getBuilderFunctionObjectParametroBuscar(req: any): any;
+    getFks(): Promise<void>;
+}
+export { PensionData };

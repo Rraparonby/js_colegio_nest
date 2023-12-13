@@ -1,0 +1,1 @@
+{"version":3,"file":"alumno_materia_fk_return_view.return.js","sourceRoot":"","sources":["../../../../../../src/estructura/alumno_materia/infrastructure/util/return/alumno_materia_fk_return_view.return.ts"],"names":[],"mappings":";;;AAKA,MAAM,yBAAyB;IAO9B;QAEC,IAAI,CAAC,SAAS,GAAG,IAAI,KAAK,EAAU,CAAC;QACrC,IAAI,CAAC,UAAU,GAAG,IAAI,KAAK,EAAW,CAAC;IACxC,CAAC;CACD;AAEO,8DAAyB"}

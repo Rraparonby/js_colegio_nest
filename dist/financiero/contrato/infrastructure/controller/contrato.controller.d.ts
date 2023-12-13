@@ -1,0 +1,38 @@
+import { Request } from "express";
+import { TipoAccionEnum } from '../../../../base/util/tipo_accion_enum';
+import { GeneralEntityController } from '../../../../base/infrastructure/controller/general_entity_controller';
+import { Pagination } from '../../../../base/application/logic/pagination';
+import { Contrato } from '../../domain/model/contrato';
+import { ContratoLogic } from '../../application/logic/contrato.logic';
+import { ContratoReturnView } from '../../infrastructure/util/return/contrato_return_view.return';
+import { ContratoCreateRequest } from '../../infrastructure/util/request/contrato_create.request';
+import { ContratoUpdateRequest } from '../../infrastructure/util/request/contrato_update.request';
+import { ContratoFKReturnView } from '../../infrastructure/util/return/contrato_fk_return_view.return';
+declare class ContratoController extends GeneralEntityController {
+    private contrato_logici1;
+    pagination1: Pagination;
+    relations1: any;
+    contrato1: Contrato;
+    contratos: Array<Contrato>;
+    contrato_return_view: ContratoReturnView;
+    result: any;
+    contrato_fk_return_view_dto: ContratoFKReturnView;
+    builder_object_contrato1: any;
+    constructor(contrato_logici1: ContratoLogic);
+    setReturnView(tipo_accion_enum1: TipoAccionEnum): void;
+    getDefault(pagination1: Pagination): Promise<ContratoReturnView>;
+    getIndex(pagination1: Pagination): Promise<ContratoReturnView>;
+    getTodos(pagination1: Pagination): Promise<ContratoReturnView>;
+    getBuscar(pagination1: Pagination, req: Request): Promise<ContratoReturnView>;
+    getSeleccionar(id: number): Promise<ContratoReturnView>;
+    nuevo(contrato_create_request1: ContratoCreateRequest): Promise<ContratoReturnView>;
+    actualizar(contrato_update_request1: ContratoUpdateRequest): Promise<ContratoReturnView>;
+    eliminar(id: number): Promise<ContratoReturnView>;
+    nuevos(contrato_create_requests: Array<ContratoCreateRequest>): Promise<ContratoReturnView>;
+    eliminars(ids: Array<number>): Promise<ContratoReturnView>;
+    actualizars(contrato_update_requests: Array<ContratoUpdateRequest>, updates_columnas: Array<string>): Promise<ContratoReturnView>;
+    guardarCambios(news_contratos: Array<Contrato>, ids_deletes_contratos: Array<number>, updates_contratos: Array<Contrato>, updates_columnas: Array<string>): Promise<ContratoReturnView>;
+    getFks(): Promise<ContratoFKReturnView>;
+    getTodosEntitiesDto(pagination1: Pagination): Promise<Array<Contrato>>;
+}
+export { ContratoController };

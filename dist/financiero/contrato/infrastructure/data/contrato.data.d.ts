@@ -1,0 +1,37 @@
+import { Repository } from 'typeorm';
+import { Pagination } from '../../../../base/application/logic/pagination';
+import { Contrato } from '../../domain/model/contrato';
+import { ContratoDataI } from './contrato.datai';
+import { Docente } from '../../../../estructura/docente/domain/model/docente';
+declare class ContratoData implements ContratoDataI {
+    static TITULO: string;
+    static MODULO: string;
+    static TABLA: string;
+    static PATH_PAGINA: string;
+    static PATH_PAGINA_FORM: string;
+    result: any;
+    contrato1?: Contrato;
+    contratos: Contrato[];
+    private contrato_data1;
+    docentesFK: Docente[];
+    private readonly docenteLogic;
+    constructor(contrato_data1: Repository<Contrato>);
+    getTodos(pagination1: Pagination, relations1: any): Promise<Contrato[]>;
+    getBuscar(builder_object_contrato1: any, pagination1: Pagination, relations1: any): Promise<Contrato[]>;
+    getBuscarGeneral(builder_object_contrato1: any, pagination1: Pagination, relations1: any): Promise<Contrato[]>;
+    getBuscarUno(builder_object_contrato1: any, relations1: any): Promise<Contrato>;
+    nuevo(contrato1: Contrato): Promise<any>;
+    actualizar(contrato1: Contrato): Promise<any>;
+    eliminar(id: number): Promise<any>;
+    nuevos(contratos: Array<Contrato>): Promise<void>;
+    eliminars(ids: Array<number>): Promise<void>;
+    actualizars(updates_contratos: Array<Contrato>, updates_columnas: Array<string>): Promise<void>;
+    getEntitiesFromModels(result: any): Contrato[];
+    getEntityFromModel(result: any): Contrato;
+    getModelsFromEntities(contratos: Contrato[]): Contrato[];
+    getModelFromEntity(contrato1: Contrato): Contrato;
+    getBuilderFunctionObjectParametroSeleccionar(id: number): any;
+    getBuilderFunctionObjectParametroBuscar(req: any): any;
+    getFks(): Promise<void>;
+}
+export { ContratoData };

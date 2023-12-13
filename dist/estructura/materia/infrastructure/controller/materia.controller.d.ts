@@ -1,0 +1,37 @@
+import { Request } from "express";
+import { TipoAccionEnum } from '../../../../base/util/tipo_accion_enum';
+import { GeneralEntityController } from '../../../../base/infrastructure/controller/general_entity_controller';
+import { Pagination } from '../../../../base/application/logic/pagination';
+import { Materia } from '../../domain/model/materia';
+import { MateriaLogic } from '../../application/logic/materia.logic';
+import { MateriaReturnView } from '../../infrastructure/util/return/materia_return_view.return';
+import { MateriaCreateRequest } from '../../infrastructure/util/request/materia_create.request';
+import { MateriaUpdateRequest } from '../../infrastructure/util/request/materia_update.request';
+declare class MateriaController extends GeneralEntityController {
+    private materia_logici1;
+    pagination1: Pagination;
+    relations1: any;
+    materia1: Materia;
+    materias: Array<Materia>;
+    materia_return_view: MateriaReturnView;
+    result: any;
+    builder_object_materia1: any;
+    constructor(materia_logici1: MateriaLogic);
+    setReturnView(tipo_accion_enum1: TipoAccionEnum): void;
+    getDefault(pagination1: Pagination): Promise<MateriaReturnView>;
+    getIndex(pagination1: Pagination): Promise<MateriaReturnView>;
+    getTodos(pagination1: Pagination): Promise<MateriaReturnView>;
+    getBuscar(pagination1: Pagination, req: Request): Promise<MateriaReturnView>;
+    getSeleccionar(id: number): Promise<MateriaReturnView>;
+    nuevo(materia_create_request1: MateriaCreateRequest): Promise<MateriaReturnView>;
+    actualizar(materia_update_request1: MateriaUpdateRequest): Promise<MateriaReturnView>;
+    eliminar(id: number): Promise<MateriaReturnView>;
+    nuevos(materia_create_requests: Array<MateriaCreateRequest>): Promise<MateriaReturnView>;
+    eliminars(ids: Array<number>): Promise<MateriaReturnView>;
+    actualizars(materia_update_requests: Array<MateriaUpdateRequest>, updates_columnas: Array<string>): Promise<MateriaReturnView>;
+    guardarCambios(news_materias: Array<Materia>, ids_deletes_materias: Array<number>, updates_materias: Array<Materia>, updates_columnas: Array<string>): Promise<MateriaReturnView>;
+    getTodosRelaciones(pagination1: Pagination): Promise<MateriaReturnView>;
+    getSeleccionarRelaciones(id: number): Promise<MateriaReturnView>;
+    getTodosEntitiesDto(pagination1: Pagination): Promise<Array<Materia>>;
+}
+export { MateriaController };

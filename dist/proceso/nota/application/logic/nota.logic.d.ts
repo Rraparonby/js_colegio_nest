@@ -1,0 +1,36 @@
+import { GeneralEntityLogic } from '../../../../base/application/logic/general_entity_logic';
+import { Pagination } from '../../../../base/application/logic/pagination';
+import { Nota } from '../../domain/model/nota';
+import { NotaData } from '../../infrastructure/data/nota.data';
+import { NotaLogicI } from './nota.logici';
+import { Alumno } from '../../../../estructura/alumno/domain/model/alumno';
+import { Materia } from '../../../../estructura/materia/domain/model/materia';
+import { Docente } from '../../../../estructura/docente/domain/model/docente';
+declare class NotaLogic extends GeneralEntityLogic implements NotaLogicI {
+    private nota_datai1;
+    result: any;
+    total: any;
+    nota1?: Nota;
+    notas: Nota[];
+    alumnosFK: Alumno[];
+    materiasFK: Materia[];
+    docentesFK: Docente[];
+    private readonly alumnoLogic;
+    private readonly materiaLogic;
+    private readonly docenteLogic;
+    constructor(nota_datai1: NotaData);
+    getTodos(pagination1: Pagination, relations1: any): Promise<Nota[]>;
+    getBuscar(builder_object_nota1: any, pagination1: Pagination, relations1: any): Promise<Nota[]>;
+    getBuscarGeneral(builder_object_nota1: any, pagination1: Pagination, relations1: any): Promise<Nota[]>;
+    getBuscarUno(builder_object_nota1: any, relations1: any): Promise<Nota>;
+    nuevo(nota1: Nota): Promise<any>;
+    actualizar(nota1: Nota): Promise<any>;
+    eliminar(id: number): Promise<any>;
+    nuevos(notas: Array<Nota>): Promise<void>;
+    eliminars(ids: Array<number>): Promise<void>;
+    actualizars(updates_notas: Array<Nota>, updates_columnas: Array<string>): Promise<void>;
+    getBuilderFunctionObjectParametroSeleccionar(id: number): any;
+    getBuilderFunctionObjectParametroBuscar(req: any): any;
+    getFks(): Promise<void>;
+}
+export { NotaLogic };

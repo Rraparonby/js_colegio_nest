@@ -1,0 +1,38 @@
+import { Request } from "express";
+import { TipoAccionEnum } from '../../../../base/util/tipo_accion_enum';
+import { GeneralEntityController } from '../../../../base/infrastructure/controller/general_entity_controller';
+import { Pagination } from '../../../../base/application/logic/pagination';
+import { Sueldo } from '../../domain/model/sueldo';
+import { SueldoLogic } from '../../application/logic/sueldo.logic';
+import { SueldoReturnView } from '../../infrastructure/util/return/sueldo_return_view.return';
+import { SueldoCreateRequest } from '../../infrastructure/util/request/sueldo_create.request';
+import { SueldoUpdateRequest } from '../../infrastructure/util/request/sueldo_update.request';
+import { SueldoFKReturnView } from '../../infrastructure/util/return/sueldo_fk_return_view.return';
+declare class SueldoController extends GeneralEntityController {
+    private sueldo_logici1;
+    pagination1: Pagination;
+    relations1: any;
+    sueldo1: Sueldo;
+    sueldos: Array<Sueldo>;
+    sueldo_return_view: SueldoReturnView;
+    result: any;
+    sueldo_fk_return_view_dto: SueldoFKReturnView;
+    builder_object_sueldo1: any;
+    constructor(sueldo_logici1: SueldoLogic);
+    setReturnView(tipo_accion_enum1: TipoAccionEnum): void;
+    getDefault(pagination1: Pagination): Promise<SueldoReturnView>;
+    getIndex(pagination1: Pagination): Promise<SueldoReturnView>;
+    getTodos(pagination1: Pagination): Promise<SueldoReturnView>;
+    getBuscar(pagination1: Pagination, req: Request): Promise<SueldoReturnView>;
+    getSeleccionar(id: number): Promise<SueldoReturnView>;
+    nuevo(sueldo_create_request1: SueldoCreateRequest): Promise<SueldoReturnView>;
+    actualizar(sueldo_update_request1: SueldoUpdateRequest): Promise<SueldoReturnView>;
+    eliminar(id: number): Promise<SueldoReturnView>;
+    nuevos(sueldo_create_requests: Array<SueldoCreateRequest>): Promise<SueldoReturnView>;
+    eliminars(ids: Array<number>): Promise<SueldoReturnView>;
+    actualizars(sueldo_update_requests: Array<SueldoUpdateRequest>, updates_columnas: Array<string>): Promise<SueldoReturnView>;
+    guardarCambios(news_sueldos: Array<Sueldo>, ids_deletes_sueldos: Array<number>, updates_sueldos: Array<Sueldo>, updates_columnas: Array<string>): Promise<SueldoReturnView>;
+    getFks(): Promise<SueldoFKReturnView>;
+    getTodosEntitiesDto(pagination1: Pagination): Promise<Array<Sueldo>>;
+}
+export { SueldoController };

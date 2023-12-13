@@ -1,0 +1,1 @@
+{"version":3,"file":"docente_materia_fk_return_view.return.js","sourceRoot":"","sources":["../../../../../../src/estructura/docente_materia/infrastructure/util/return/docente_materia_fk_return_view.return.ts"],"names":[],"mappings":";;;AAKA,MAAM,0BAA0B;IAO/B;QAEC,IAAI,CAAC,UAAU,GAAG,IAAI,KAAK,EAAW,CAAC;QACvC,IAAI,CAAC,UAAU,GAAG,IAAI,KAAK,EAAW,CAAC;IACxC,CAAC;CACD;AAEO,gEAA0B"}

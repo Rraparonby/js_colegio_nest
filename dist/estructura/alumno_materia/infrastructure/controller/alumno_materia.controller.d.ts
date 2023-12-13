@@ -1,0 +1,38 @@
+import { Request } from "express";
+import { TipoAccionEnum } from '../../../../base/util/tipo_accion_enum';
+import { GeneralEntityController } from '../../../../base/infrastructure/controller/general_entity_controller';
+import { Pagination } from '../../../../base/application/logic/pagination';
+import { AlumnoMateria } from '../../domain/model/alumno_materia';
+import { AlumnoMateriaLogic } from '../../application/logic/alumno_materia.logic';
+import { AlumnoMateriaReturnView } from '../../infrastructure/util/return/alumno_materia_return_view.return';
+import { AlumnoMateriaCreateRequest } from '../../infrastructure/util/request/alumno_materia_create.request';
+import { AlumnoMateriaUpdateRequest } from '../../infrastructure/util/request/alumno_materia_update.request';
+import { AlumnoMateriaFKReturnView } from '../../infrastructure/util/return/alumno_materia_fk_return_view.return';
+declare class AlumnoMateriaController extends GeneralEntityController {
+    private alumno_materia_logici1;
+    pagination1: Pagination;
+    relations1: any;
+    alumno_materia1: AlumnoMateria;
+    alumno_materias: Array<AlumnoMateria>;
+    alumno_materia_return_view: AlumnoMateriaReturnView;
+    result: any;
+    alumno_materia_fk_return_view_dto: AlumnoMateriaFKReturnView;
+    builder_object_alumno_materia1: any;
+    constructor(alumno_materia_logici1: AlumnoMateriaLogic);
+    setReturnView(tipo_accion_enum1: TipoAccionEnum): void;
+    getDefault(pagination1: Pagination): Promise<AlumnoMateriaReturnView>;
+    getIndex(pagination1: Pagination): Promise<AlumnoMateriaReturnView>;
+    getTodos(pagination1: Pagination): Promise<AlumnoMateriaReturnView>;
+    getBuscar(pagination1: Pagination, req: Request): Promise<AlumnoMateriaReturnView>;
+    getSeleccionar(id: number): Promise<AlumnoMateriaReturnView>;
+    nuevo(alumno_materia_create_request1: AlumnoMateriaCreateRequest): Promise<AlumnoMateriaReturnView>;
+    actualizar(alumno_materia_update_request1: AlumnoMateriaUpdateRequest): Promise<AlumnoMateriaReturnView>;
+    eliminar(id: number): Promise<AlumnoMateriaReturnView>;
+    nuevos(alumno_materia_create_requests: Array<AlumnoMateriaCreateRequest>): Promise<AlumnoMateriaReturnView>;
+    eliminars(ids: Array<number>): Promise<AlumnoMateriaReturnView>;
+    actualizars(alumno_materia_update_requests: Array<AlumnoMateriaUpdateRequest>, updates_columnas: Array<string>): Promise<AlumnoMateriaReturnView>;
+    guardarCambios(news_alumno_materias: Array<AlumnoMateria>, ids_deletes_alumno_materias: Array<number>, updates_alumno_materias: Array<AlumnoMateria>, updates_columnas: Array<string>): Promise<AlumnoMateriaReturnView>;
+    getFks(): Promise<AlumnoMateriaFKReturnView>;
+    getTodosEntitiesDto(pagination1: Pagination): Promise<Array<AlumnoMateria>>;
+}
+export { AlumnoMateriaController };

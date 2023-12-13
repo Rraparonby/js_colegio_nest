@@ -1,0 +1,38 @@
+import { Request } from "express";
+import { TipoAccionEnum } from '../../../../base/util/tipo_accion_enum';
+import { GeneralEntityController } from '../../../../base/infrastructure/controller/general_entity_controller';
+import { Pagination } from '../../../../base/application/logic/pagination';
+import { DocenteMateria } from '../../domain/model/docente_materia';
+import { DocenteMateriaLogic } from '../../application/logic/docente_materia.logic';
+import { DocenteMateriaReturnView } from '../../infrastructure/util/return/docente_materia_return_view.return';
+import { DocenteMateriaCreateRequest } from '../../infrastructure/util/request/docente_materia_create.request';
+import { DocenteMateriaUpdateRequest } from '../../infrastructure/util/request/docente_materia_update.request';
+import { DocenteMateriaFKReturnView } from '../../infrastructure/util/return/docente_materia_fk_return_view.return';
+declare class DocenteMateriaController extends GeneralEntityController {
+    private docente_materia_logici1;
+    pagination1: Pagination;
+    relations1: any;
+    docente_materia1: DocenteMateria;
+    docente_materias: Array<DocenteMateria>;
+    docente_materia_return_view: DocenteMateriaReturnView;
+    result: any;
+    docente_materia_fk_return_view_dto: DocenteMateriaFKReturnView;
+    builder_object_docente_materia1: any;
+    constructor(docente_materia_logici1: DocenteMateriaLogic);
+    setReturnView(tipo_accion_enum1: TipoAccionEnum): void;
+    getDefault(pagination1: Pagination): Promise<DocenteMateriaReturnView>;
+    getIndex(pagination1: Pagination): Promise<DocenteMateriaReturnView>;
+    getTodos(pagination1: Pagination): Promise<DocenteMateriaReturnView>;
+    getBuscar(pagination1: Pagination, req: Request): Promise<DocenteMateriaReturnView>;
+    getSeleccionar(id: number): Promise<DocenteMateriaReturnView>;
+    nuevo(docente_materia_create_request1: DocenteMateriaCreateRequest): Promise<DocenteMateriaReturnView>;
+    actualizar(docente_materia_update_request1: DocenteMateriaUpdateRequest): Promise<DocenteMateriaReturnView>;
+    eliminar(id: number): Promise<DocenteMateriaReturnView>;
+    nuevos(docente_materia_create_requests: Array<DocenteMateriaCreateRequest>): Promise<DocenteMateriaReturnView>;
+    eliminars(ids: Array<number>): Promise<DocenteMateriaReturnView>;
+    actualizars(docente_materia_update_requests: Array<DocenteMateriaUpdateRequest>, updates_columnas: Array<string>): Promise<DocenteMateriaReturnView>;
+    guardarCambios(news_docente_materias: Array<DocenteMateria>, ids_deletes_docente_materias: Array<number>, updates_docente_materias: Array<DocenteMateria>, updates_columnas: Array<string>): Promise<DocenteMateriaReturnView>;
+    getFks(): Promise<DocenteMateriaFKReturnView>;
+    getTodosEntitiesDto(pagination1: Pagination): Promise<Array<DocenteMateria>>;
+}
+export { DocenteMateriaController };

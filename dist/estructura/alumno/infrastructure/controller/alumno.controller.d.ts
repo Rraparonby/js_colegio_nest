@@ -1,0 +1,37 @@
+import { Request } from "express";
+import { TipoAccionEnum } from '../../../../base/util/tipo_accion_enum';
+import { GeneralEntityController } from '../../../../base/infrastructure/controller/general_entity_controller';
+import { Pagination } from '../../../../base/application/logic/pagination';
+import { Alumno } from '../../domain/model/alumno';
+import { AlumnoLogic } from '../../application/logic/alumno.logic';
+import { AlumnoReturnView } from '../../infrastructure/util/return/alumno_return_view.return';
+import { AlumnoCreateRequest } from '../../infrastructure/util/request/alumno_create.request';
+import { AlumnoUpdateRequest } from '../../infrastructure/util/request/alumno_update.request';
+declare class AlumnoController extends GeneralEntityController {
+    private alumno_logici1;
+    pagination1: Pagination;
+    relations1: any;
+    alumno1: Alumno;
+    alumnos: Array<Alumno>;
+    alumno_return_view: AlumnoReturnView;
+    result: any;
+    builder_object_alumno1: any;
+    constructor(alumno_logici1: AlumnoLogic);
+    setReturnView(tipo_accion_enum1: TipoAccionEnum): void;
+    getDefault(pagination1: Pagination): Promise<AlumnoReturnView>;
+    getIndex(pagination1: Pagination): Promise<AlumnoReturnView>;
+    getTodos(pagination1: Pagination): Promise<AlumnoReturnView>;
+    getBuscar(pagination1: Pagination, req: Request): Promise<AlumnoReturnView>;
+    getSeleccionar(id: number): Promise<AlumnoReturnView>;
+    nuevo(alumno_create_request1: AlumnoCreateRequest): Promise<AlumnoReturnView>;
+    actualizar(alumno_update_request1: AlumnoUpdateRequest): Promise<AlumnoReturnView>;
+    eliminar(id: number): Promise<AlumnoReturnView>;
+    nuevos(alumno_create_requests: Array<AlumnoCreateRequest>): Promise<AlumnoReturnView>;
+    eliminars(ids: Array<number>): Promise<AlumnoReturnView>;
+    actualizars(alumno_update_requests: Array<AlumnoUpdateRequest>, updates_columnas: Array<string>): Promise<AlumnoReturnView>;
+    guardarCambios(news_alumnos: Array<Alumno>, ids_deletes_alumnos: Array<number>, updates_alumnos: Array<Alumno>, updates_columnas: Array<string>): Promise<AlumnoReturnView>;
+    getTodosRelaciones(pagination1: Pagination): Promise<AlumnoReturnView>;
+    getSeleccionarRelaciones(id: number): Promise<AlumnoReturnView>;
+    getTodosEntitiesDto(pagination1: Pagination): Promise<Array<Alumno>>;
+}
+export { AlumnoController };

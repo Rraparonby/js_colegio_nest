@@ -1,0 +1,33 @@
+import { GeneralEntityLogic } from '../../../../base/application/logic/general_entity_logic';
+import { Pagination } from '../../../../base/application/logic/pagination';
+import { DocenteMateria } from '../../domain/model/docente_materia';
+import { DocenteMateriaData } from '../../infrastructure/data/docente_materia.data';
+import { DocenteMateriaLogicI } from './docente_materia.logici';
+import { Docente } from '../../../../estructura/docente/domain/model/docente';
+import { Materia } from '../../../../estructura/materia/domain/model/materia';
+declare class DocenteMateriaLogic extends GeneralEntityLogic implements DocenteMateriaLogicI {
+    private docente_materia_datai1;
+    result: any;
+    total: any;
+    docente_materia1?: DocenteMateria;
+    docente_materias: DocenteMateria[];
+    docentesFK: Docente[];
+    materiasFK: Materia[];
+    private readonly docenteLogic;
+    private readonly materiaLogic;
+    constructor(docente_materia_datai1: DocenteMateriaData);
+    getTodos(pagination1: Pagination, relations1: any): Promise<DocenteMateria[]>;
+    getBuscar(builder_object_docente_materia1: any, pagination1: Pagination, relations1: any): Promise<DocenteMateria[]>;
+    getBuscarGeneral(builder_object_docente_materia1: any, pagination1: Pagination, relations1: any): Promise<DocenteMateria[]>;
+    getBuscarUno(builder_object_docente_materia1: any, relations1: any): Promise<DocenteMateria>;
+    nuevo(docente_materia1: DocenteMateria): Promise<any>;
+    actualizar(docente_materia1: DocenteMateria): Promise<any>;
+    eliminar(id: number): Promise<any>;
+    nuevos(docente_materias: Array<DocenteMateria>): Promise<void>;
+    eliminars(ids: Array<number>): Promise<void>;
+    actualizars(updates_docente_materias: Array<DocenteMateria>, updates_columnas: Array<string>): Promise<void>;
+    getBuilderFunctionObjectParametroSeleccionar(id: number): any;
+    getBuilderFunctionObjectParametroBuscar(req: any): any;
+    getFks(): Promise<void>;
+}
+export { DocenteMateriaLogic };
